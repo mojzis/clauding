@@ -1,7 +1,9 @@
 ---
-title: Project-knowledge rules
+title: Clauding Manifesto
 tags: [meta]
 ---
+
+**How to set up your project for successful agentic engineering.**
 
 Short rules that keep a repo's knowledge agent-usable and its "done" provable.
 Strong models follow short rules well: text gets most of the way, a small checker covers the rest.

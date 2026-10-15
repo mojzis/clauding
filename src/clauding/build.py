@@ -20,7 +20,8 @@ import yaml
 
 SITE_URL = "https://mojzis.github.io/clauding"
 REPO_URL = "https://github.com/mojzis/clauding"
-TITLE = "Project-knowledge rules"
+TITLE = "Clauding Manifesto"
+TAGLINE = "How to set up your project for successful agentic engineering."
 SUMMARY = (
     "Short rules that keep a repo's knowledge agent-usable and its 'done' provable: "
     "QA.md, architecture, ADRs, papercuts, small tagged docs, freshness."
@@ -184,7 +185,8 @@ def html_page(page: Page, fragment: str, base: str) -> str:
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html.escape(page.title)} · {TITLE}</title>
+<title>{html.escape(page.title)}{"" if page.title == TITLE else f" · {TITLE}"}</title>
+<meta name="description" content="{html.escape(TAGLINE)}">
 <link rel="alternate" type="text/markdown" href="{base}/{page.url}index.md">
 <style>{CSS}</style><script>{THEME_JS}</script></head>
 <body><header><a href="{base}/">{TITLE}</a>
@@ -249,7 +251,7 @@ border-radius:99px;padding:0 .5rem;margin-right:.3rem}
 
 def llms_txt(pages: list[Page]) -> str:
     """Index of raw markdown, grouped by section."""
-    out = [f"# {TITLE}", "", f"> {SUMMARY}", ""]
+    out = [f"# {TITLE}", "", f"> {TAGLINE} {SUMMARY}", ""]
     for section, label in SECTION_TITLES.items():
         group = [p for p in pages if p.src.parts[0] == section]
         if section == "scaffold":
@@ -266,7 +268,7 @@ def llms_txt(pages: list[Page]) -> str:
 
 def llms_full(pages: list[Page]) -> str:
     """Every page's raw markdown, concatenated."""
-    parts = [f"# {TITLE}\n\n> {SUMMARY}\n"]
+    parts = [f"# {TITLE}\n\n> {TAGLINE} {SUMMARY}\n"]
     parts += [f"\n---\nsource: {SITE_URL}/{p.url}index.md\n{p.raw}" for p in pages]
     return "\n".join(parts)
 

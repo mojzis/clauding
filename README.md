@@ -1,5 +1,6 @@
-# clauding
+# Clauding Manifesto
 
+How to set up your project for successful agentic engineering.
 Project-knowledge rules for agent-assisted repos: QA, architecture, ADRs, papercuts,
 small tagged docs, freshness. Published at https://mojzis.github.io/clauding (agents: `/llms.txt`).
 

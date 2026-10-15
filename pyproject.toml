@@ -1,8 +1,15 @@
 [project]
-name = "python-template"
+name = "clauding"
 version = "0.1.0"
-description = "A Python project template"
+description = "Project-knowledge rules: manifesto site, rules text, scaffold"
 requires-python = ">=3.11"
+dependencies = [
+    "markdown",
+    "pyyaml",
+]
+
+[project.scripts]
+build = "clauding.build:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -37,6 +44,8 @@ select = ["E", "F", "W", "I", "UP", "B", "S", "SIM", "C4", "DTZ", "T20", "PTH", 
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S101", "S105", "S106", "PLR2004"]
+# BuildError messages carry the offending file and link; a class per message adds nothing.
+"src/clauding/build.py" = ["TRY003"]
 
 [tool.ruff.format]
 
@@ -74,7 +83,7 @@ extend_check = [
 ]
 
 [tool.biston.scan]
-exclude = ["**/tests/**"]
+exclude = ["**/tests/**", "site/**"]
 
 [tool.poe]
 verbosity = -1

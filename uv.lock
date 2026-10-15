@@ -23,6 +23,57 @@ wheels = [
 ]
 
 [[package]]
+name = "clauding"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "markdown" },
+    { name = "pyyaml" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "biston" },
+    { name = "deptry" },
+    { name = "gerenuk" },
+    { name = "interrogate" },
+    { name = "madoqua" },
+    { name = "poethepoet" },
+    { name = "pycoati" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "ty" },
+    { name = "ty-find" },
+    { name = "vulture" },
+    { name = "zorilla" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "markdown" },
+    { name = "pyyaml" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "biston" },
+    { name = "deptry" },
+    { name = "gerenuk" },
+    { name = "interrogate" },
+    { name = "madoqua" },
+    { name = "poethepoet" },
+    { name = "pycoati" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "ty" },
+    { name = "ty-find" },
+    { name = "vulture" },
+    { name = "zorilla" },
+]
+
+[[package]]
 name = "click"
 version = "8.5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -240,6 +291,15 @@ wheels = [
 ]
 
 [[package]]
+name = "markdown"
+version = "3.11.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/4e/d4/f3f4b6ed70b7c7608fa026ff3bbe59ace9b1ebca43d8ae4886c87c95e81d/markdown-3.11.1.tar.gz", hash = "sha256:496f4f80f9ebd3395a04c8ec9595c40bbe8ec19e9c67d21fe071a1643e876606", size = 492927, upload-time = "2026-10-13T19:29:13.343Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/75/e6/1c7b7a48aa3f2c2a5d3c71a6c9c90a6c8c2903e5c73663b5f5e38f87257f/markdown-3.11.1-py3-none-any.whl", hash = "sha256:f1fa378ba5d682900c9ecb55ccceacca936016dda7c3b27097e8ae03ff78feb5", size = 116774, upload-time = "2026-10-13T19:29:12.066Z" },
+]
+
+[[package]]
 name = "packaging"
 version = "26.3"
 source = { registry = "https://pypi.org/simple" }
@@ -336,49 +396,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/b1/51/a849f96e117386044471c8ec2bd6cfebacda285da9525c9106aeb28da671/pytest_cov-7.1.0.tar.gz", hash = "sha256:30674f2b5f6351aa09702a9c8c364f6a01c27aae0c1366ae8016160d1efc56b2", size = 55592, upload-time = "2026-03-21T20:11:16.284Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9d/7a/d968e294073affff457b041c2be9868a40c1c71f4a35fcc1e45e5493067b/pytest_cov-7.1.0-py3-none-any.whl", hash = "sha256:a0461110b7865f9a271aa1b51e516c9a95de9d696734a2f71e3e78f46e1d4678", size = 22876, upload-time = "2026-03-21T20:11:14.438Z" },
-]
-
-[[package]]
-name = "python-template"
-version = "0.1.0"
-source = { editable = "." }
-
-[package.dev-dependencies]
-dev = [
-    { name = "biston" },
-    { name = "deptry" },
-    { name = "gerenuk" },
-    { name = "interrogate" },
-    { name = "madoqua" },
-    { name = "poethepoet" },
-    { name = "pycoati" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "ty" },
-    { name = "ty-find" },
-    { name = "vulture" },
-    { name = "zorilla" },
-]
-
-[package.metadata]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "biston" },
-    { name = "deptry" },
-    { name = "gerenuk" },
-    { name = "interrogate" },
-    { name = "madoqua" },
-    { name = "poethepoet" },
-    { name = "pycoati" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "ty" },
-    { name = "ty-find" },
-    { name = "vulture" },
-    { name = "zorilla" },
 ]
 
 [[package]]

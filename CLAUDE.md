@@ -1,4 +1,6 @@
-# Python Template
+# clauding
+
+@AGENTS.md
 
 ## Commands
 
@@ -6,10 +8,11 @@
 - `uv run poe fix` — auto-format and fix lint issues
 - `uv run poe test` — run tests only
 - `uv run poe check-all` — run all checks including dead-code and unused-deps
+- `uv run build` — build the site into `site/` (`BASE_URL= uv run build` for root-relative local preview; `python -m http.server -d site`)
 
 ## Stack
 
-uv, ruff (lint/format), ty (type check), pytest, poethepoet (task runner)
+uv, ruff (lint/format), ty (type check), pytest, poethepoet (task runner); site: Python-Markdown + PyYAML
 
 ## Toolbox
 

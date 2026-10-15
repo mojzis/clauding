@@ -25,6 +25,11 @@ Strong models follow short rules well: text gets most of the way, a small checke
 | repo on an older version | same prompt: it reads the `project-knowledge rules vN` marker and upgrades |
 | agent reading this site | start at [`llms.txt`](https://mojzis.github.io/clauding/llms.txt) |
 
+## Evolving
+
+Practices on trial, not in the rules yet: [session handoff](evolving/session-handoff.md),
+[ideas inbox](evolving/ideas-inbox.md). [All](evolving/README.md).
+
 ## Scaffold
 
 Copied into target repos as-is:

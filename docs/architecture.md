@@ -26,13 +26,15 @@ flowchart LR
 | principle pages | `content/principles/*.md` | humans and agents wanting the why |
 | catch-up prompt | `content/catch-up.md` | pasted into an agent session in an existing repo |
 | scaffold | `scaffold/` | copied as-is into target repos |
+| evolving practices | `content/evolving/*.md`, `status: trial` | adopted by hand; graduate via ADR + new rules version ([ADR 0011](adr/0011-evolving-practices-section.md)) |
 
 A published `vN.md` never changes. A rules change ships as `vN+1.md` ([ADR 0002](adr/0002-rules-inlined-with-version-marker.md)).
 
 ## Docs layout
 
 This repo's own knowledge follows the rules: `docs/architecture.md`, `docs/adr/`, `docs/papercuts/`,
-`docs/style.md`, `docs/tags.md`, frontmatter on every page. The tag vocabulary covers `docs/` and `content/`.
+`docs/style.md`, `docs/tags.md`, frontmatter on every page. Trials the evolving practices:
+`docs/next-session.md` + `docs/sessions/`, `docs/ideas/`. The tag vocabulary covers `docs/` and `content/`.
 `docs/brief.md` is the original handoff brief, kept for its open questions.
 
 ## QA
@@ -69,6 +71,7 @@ scaffold YAML), run by the commit hook on staged markdown and by CI ([toolbox](t
 Plus `/llms.txt` (index of raw pages) and `/llms-full.txt` (all raw pages concatenated).
 Relative `.md` links are rewritten to site URLs; one that doesn't resolve fails the build.
 Template files (`_*.md`, `0000-*.md`) are not pages. `BASE_URL` sets the path prefix (default `/clauding`).
+Theme follows the OS; a header toggle pins light/dark per viewer (`localStorage`).
 Deploy: push to `main` → `.github/workflows/pages.yml`.
 
 **Invariants**

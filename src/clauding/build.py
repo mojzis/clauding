@@ -176,8 +176,8 @@ def html_page(page: Page, fragment: str, base: str) -> str:
     )
     mermaid = (
         f'<script src="{MERMAID_JS}"></script>'
-        "<script>mermaid.initialize({startOnLoad:true,theme:"
-        "matchMedia('(prefers-color-scheme: dark)').matches?'dark':'default'})</script>"
+        "<script>mermaid.initialize({startOnLoad:true,"
+        "theme:isDark()?'dark':'default'})</script>"
         if 'class="mermaid"' in fragment
         else ""
     )
@@ -186,21 +186,42 @@ def html_page(page: Page, fragment: str, base: str) -> str:
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(page.title)} · {TITLE}</title>
 <link rel="alternate" type="text/markdown" href="{base}/{page.url}index.md">
-<style>{CSS}</style></head>
+<style>{CSS}</style><script>{THEME_JS}</script></head>
 <body><header><a href="{base}/">{TITLE}</a>
 <nav><a href="{base}/principles/">principles</a><a href="{base}/rules/v1/">rules</a>
-<a href="{base}/catch-up/">catch-up</a><a href="{base}/docs/">docs</a>
-<a href="{base}/llms.txt">llms.txt</a></nav></header>
+<a href="{base}/catch-up/">catch-up</a><a href="{base}/evolving/">evolving</a>
+<a href="{base}/docs/">docs</a>
+<a href="{base}/llms.txt">llms.txt</a>
+<button id="theme" type="button" onclick="toggleTheme()"
+ aria-label="Toggle light/dark">◐</button>
+</nav></header>
 <main>{heading}<div class="tags">{tags}</div>{fragment}
 <p class="raw"><a href="{base}/{page.url}index.md">raw markdown</a></p></main>
 {mermaid}</body></html>
 """
 
 
+# Theme: OS preference by default; the header button pins light/dark per viewer.
+# Runs in <head> so the pinned theme applies before first paint.
+THEME_JS = """
+function isDark(){var t=document.documentElement.dataset.theme;
+return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+try{var t=localStorage.getItem('theme');
+if(t)document.documentElement.dataset.theme=t}catch(e){}
+function toggleTheme(){var t=isDark()?'light':'dark';
+document.documentElement.dataset.theme=t;
+try{localStorage.setItem('theme',t)}catch(e){}
+if(document.querySelector('.mermaid'))location.reload()}
+"""
+
 CSS = """
 :root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a65;--line:#e4e1d8;--accent:#9a3412;--code:#f1eee6}
-@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#e9e7e1;--muted:#9a978e;
---line:#2e2d29;--accent:#fb923c;--code:#22211e}}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#161614;
+--fg:#e9e7e1;--muted:#9a978e;--line:#2e2d29;--accent:#fb923c;--code:#22211e}}
+:root[data-theme=dark]{--bg:#161614;--fg:#e9e7e1;--muted:#9a978e;--line:#2e2d29;
+--accent:#fb923c;--code:#22211e}
+#theme{background:none;border:1px solid var(--line);border-radius:99px;color:var(--fg);
+cursor:pointer;font-size:.9rem;padding:0 .5rem}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);
 font:16px/1.6 ui-sans-serif,system-ui,sans-serif}

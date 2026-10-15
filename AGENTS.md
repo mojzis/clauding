@@ -52,7 +52,9 @@ Before a task: find docs whose `tags`/`code` touch the area, and read their open
 
 ## This repo
 
-Start at [`docs/README.md`](docs/README.md). Checks: [`QA.md`](QA.md). Tools and gotchas: [`docs/toolbox.md`](docs/toolbox.md).
+Start at [`docs/next-session.md`](docs/next-session.md), then [`docs/README.md`](docs/README.md).
+Trying the [evolving practices](content/evolving/README.md): hand off via `next-session.md` at session end;
+an idea mid-task → `docs/ideas/`, then keep going. Checks: [`QA.md`](QA.md). Tools and gotchas: [`docs/toolbox.md`](docs/toolbox.md).
 
 - Site source: `content/` (manifesto), `docs/` (this repo's own knowledge, also published),
   `scaffold/` (published verbatim). Build: `uv run build` → `site/`, never edit `site/`.

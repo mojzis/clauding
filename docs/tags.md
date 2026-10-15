@@ -20,3 +20,6 @@ Applies to `docs/**` and `content/**`.
 - `knowledge`: small linked files, frontmatter, tags
 - `freshness`: keeping docs true to the code
 - `tooling`: the planned checker CLI
+- `evolving`: practices on trial, not yet in the rules
+- `handoff`: where a session left off, what the next one picks up
+- `ideas`: parked ideas, captured mid-task

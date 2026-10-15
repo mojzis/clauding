@@ -52,6 +52,8 @@ Before a task: find docs whose `tags`/`code` touch the area, and read their open
 
 ## This repo
 
+Start at [`docs/README.md`](docs/README.md). Checks: [`QA.md`](QA.md). Tools and gotchas: [`docs/toolbox.md`](docs/toolbox.md).
+
 - Site source: `content/` (manifesto), `docs/` (this repo's own knowledge, also published),
   `scaffold/` (published verbatim). Build: `uv run build` → `site/`, never edit `site/`.
 - `content/rules/vN.md` is frozen once published. Change the rules → new `vN+1.md` + bump the marker.

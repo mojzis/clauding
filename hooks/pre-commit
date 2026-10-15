@@ -1,4 +1,12 @@
 #!/bin/sh
+# madoqua handles staged .py; it is a no-op without them, so docs get their own step.
 root=$(git rev-parse --show-toplevel)
+cd "$root" || exit 2
+if git diff --cached --name-only --diff-filter=ACMR | grep -qE '^(content|docs|scaffold)/|^[^/]+\.md$'; then
+  BASE_URL= .venv/bin/build >/dev/null || exit 1
+  .venv/bin/pytest -q -o addopts= tests/test_build.py -k "real or scaffold" >/dev/null \
+    || { echo "docs check failed: .venv/bin/pytest -q -o addopts= tests/test_build.py -k \"real or scaffold\"" >&2; exit 1; }
+  echo "docs check ok (build + tags)"
+fi
 [ -x "$root/.venv/bin/madoqua" ] && exec "$root/.venv/bin/madoqua" run
 exec madoqua run

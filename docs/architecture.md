@@ -50,7 +50,8 @@ This repo's own knowledge follows the rules: `docs/architecture.md`, `docs/adr/`
 
 No checker yet. Planned `check` / `qa run` / `touching` / `tags` / `links`, parsing markdown on every
 call, no stored index ([ADR 0009](adr/0009-markdown-only-source-of-truth.md)). Where it lives is open.
-The build's broken-link failure is the only automated check today.
+Today's automated checks: the build (broken links, bad frontmatter) and `tests/test_build.py` (tags in vocabulary,
+scaffold YAML), run by the commit hook on staged markdown and by CI ([toolbox](toolbox.md)).
 
 ## Site
 

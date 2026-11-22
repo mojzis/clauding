@@ -36,13 +36,32 @@ docs/
 Session file name: `YYYY-MM-DD-<n>-slug.md`; `<n>` orders several sessions on one day;
 the slug names the outcome, not the task.
 
+## When
+
+Not "when you feel done", which never fires reliably. Tie it to the moment the agent
+already recognizes: handing the work back to the human. The line for `CLAUDE.md`:
+
+> Whenever you hand work back to the user (done, blocked, or waiting on them), first
+> rewrite `docs/next-session.md`: what's still open, the next step, and anything a fresh
+> session would have to rediscover. Remove anything finished or stale; keep it under
+> ~20 lines.
+
+| trigger | verdict |
+|---|---|
+| "when you feel done" | too vague; the human returns late and finds nothing written |
+| hook after every turn that changed files | rejected: pulls the agent off the goal |
+| hand-back (done, blocked, waiting) | the wrap-up summary is being written anyway; *blocked/waiting* covers the human arriving late |
+
+The wrap-up summary looks back (what I did). The file looks forward (what's next).
+The rule names both so the agent doesn't paste the summary.
+
 ## Rule
 
 1. **Start:** read `next-session.md`, then the docs it links. It's the entry point, before `docs/README.md`.
-2. **End:** `git mv docs/next-session.md docs/sessions/<date>-<n>-<slug>.md`. Move the file;
-   don't copy it piece by piece.
-3. Write a new `next-session.md`: only where things stand now. Carry unresolved items forward
-   as one-liners linking into `sessions/`. Drop resolved ones.
+2. **First hand-back of a session:** `git mv docs/next-session.md docs/sessions/<date>-<n>-<slug>.md`.
+   Move the file; don't copy it piece by piece.
+3. **Every hand-back:** rewrite `next-session.md`: only where things stand now, under ~20 lines.
+   Carry unresolved items forward as one-liners linking into `sessions/`. Drop resolved and stale ones.
 4. Commit with the session's last change.
 
 `sessions/` is history: never edited after the move.
@@ -64,5 +83,4 @@ A fact that outlives the session (a decision, an invariant) goes into its own do
 
 - Frontmatter and tags on session files: rules say every doc; cecil's have none.
   This repo gives them `title` + `tags: [handoff]`.
-- Who writes it: the agent at "wrap up", or a hook/command. Today: by hand, prompted.
 - Subprojects: one `next-session.md` per repo, or per subproject like `QA.md`.
